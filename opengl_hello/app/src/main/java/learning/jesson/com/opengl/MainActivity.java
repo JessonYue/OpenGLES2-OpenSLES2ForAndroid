@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private OPENGLSurfaceView oglView;
+    private WlGLSurfaceView oglView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
