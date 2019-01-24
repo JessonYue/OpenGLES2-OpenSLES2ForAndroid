@@ -16,53 +16,6 @@
 
 using namespace std;
 
-
-JavaVM * jvm;
-jmethodID callbackId;
-jobject  obj;
-static int startNum;
-static int endNum;
-static const char *classPathPrime = "jni/jesson/com/jni/thread/PrimeNative";
-
-
-static JNINativeMethod methodPrime[] = {
-        {"init", "(II)V", (void *)jni_jesson_com_jni_thread_PrimeNative_init}
-};
-
-//static JNINativeMethod methodExec[] = {
-//        {"exec","()V", (void*) Java_com_zuoshaohua_threadtest_ActNative_nativeExec}
-//};
-
-
-static int registerNativeMethods(JNIEnv* env, const char* className, JNINativeMethod* gMethods, int numMethods){
-
-    jclass clz = env->FindClass(className);                    //通过完整的类路径得jclass结构体.
-    env->RegisterNatives(clz, gMethods, numMethods);
-    return JNI_TRUE;
-}
-
-static int registerNatives(JNIEnv* env){
-    registerNativeMethods(env, classPathPrime, methodPrime, sizeof(methodPrime) / sizeof(methodPrime[0]));
-    //registerNativeMethods(env, classPathAct, methodExec, sizeof(methodExec) / sizeof(methodExec[0]));
-    return JNI_TRUE;
-
-}
-
-jint JNI_OnLoad(JavaVM* vm, void* reserved){
-    JNIEnv *env;
-    jvm = vm;
-    if ((jvm->GetEnv((void**) &env, JNI_VERSION_1_4) != JNI_OK)) //将JNI的版本设置为1.4,并通过jvm获取JNIEnv结构体
-        return -1;
-    if (registerNatives(env) != JNI_TRUE)                             //注册我们的本地方法到VM中.
-        return -1;
-    return JNI_VERSION_1_4;
-}
-
-
-
-
-
-
 extern "C"
 JNIEXPORT void JNICALL
 Java_jni_jesson_com_jni_JavaTest_printMethod(JNIEnv *env, jobject instance) {
@@ -167,44 +120,80 @@ Java_jni_jesson_com_jni_JavaTest_changeValue(JNIEnv *env, jobject obj) {
 
 }
 
-
-
-int isPrime(int num)
-{
-    int i = 0;
-    for(i = 2; i*i <= num; i++)     //这里必须是 i*i<= num, 比如25,如果 i*i<25,
-    {                               //那么这个数就会被判为奇数.以为,i=5的时候. i*i = <span style="font-family:Courier New;">25,退出循环,</span>
-        if( num%i == 0 ){
-            return 0;
-        }
-    }
-    return 1;
+/**
+ * 动态调用  不需要包名和类的路径来确定位置
+ */
+extern "C"
+//JNIEnv *env, jobject instance 如果传参数这两个参数必须存在
+jint dynamicTest(JNIEnv *env, jobject instance, jint i) {
+    LOGE("我是被动态注册的方法dynamicTest");
+    return i;
 }
 
 
 extern "C"
-JNIEXPORT void JNICALL
-Java_jni_jesson_com_jni_thread_PrimeNative_init(JNIEnv *env, jobject instance, jint start,
-                                                jint end) {
-
-//获取start,和end.保存到一个起来．
-    __android_log_print(ANDROID_LOG_INFO, "PrimeNative", "start = %d, end =%d\n", start, end);
-    startNum = start;
-    endNum = end;
-    //1. 获取jclass对象.
-    jclass clz =env->GetObjectClass(instance);
-    //2. 获取callBack方法.
-    callbackId = env->GetMethodID(clz,"callBack","(I)V");
-    //3. 将clz转化成全局变量.
-    obj = env->NewGlobalRef(instance);
-
-    int i = 0 ;
-    for(i  =startNum; i<endNum; i++)
-    {
-        if(isPrime(i))
-        {
-            __android_log_print(ANDROID_LOG_INFO, "ActNative", "prime = %d", i);
-            env->CallVoidMethod(obj,callbackId,i);    //回调java层方法,将数据显示到Java页面.
-        }
+void doit(JNIEnv *env, jobject obj){
+    LOGE("我是被动态注册的方法doit");
+    jthrowable exc = NULL;
+    jclass clazz = env->GetObjectClass(obj);
+    jmethodID mid = env->GetStaticMethodID(clazz,"exceptionCallback","()V");
+    if (mid != NULL) {
+        env->CallStaticVoidMethod(clazz,mid);
     }
+    printf("In C: Java_com_study_jnilearn_JNIException_doit-->called!!!!");
+    if (env->ExceptionCheck()) {  // 检查JNI调用是否有引发异常
+        env->ExceptionDescribe();
+        env->ExceptionClear();        // 清除引发的异常，在Java层不会打印异常的堆栈信息
+        env->ThrowNew(env->FindClass("java/lang/Exception"),"JNI抛出的异常！");
+        return;
+    }
+    mid = env->GetStaticMethodID(clazz,"normalCallback","()V");
+    if (mid != NULL) {
+        env->CallStaticVoidMethod(clazz,mid);
+    }
+
+}
+
+
+extern "C"
+void mainThread(JNIEnv *env, jobject obj){
+env->
+}
+
+
+extern "C"
+void setJNIEnv(JNIEnv *env, jobject obj){
+
+}
+
+
+
+JavaVM *_vm;
+//类名
+static const char *mClassName = "jni/jesson/com/jni/JavaTest";
+//静态的Jni native 方法数组
+static const JNINativeMethod method[] = {
+        //方法名    签名    本地方法
+        {"dynamicJavaTest", "(I)I", (int *) dynamicTest},
+        {"doit", "()V", (void *)doit},
+        {"mainThread", "()V", (void *)mainThread},
+        {"setJNIEnv", "()V", (void *)setJNIEnv}
+};
+
+//返回Jni 版本
+int JNI_OnLoad(JavaVM *vm, void *r) {
+    LOGE("JNI_OnLoad");
+    _vm = vm;
+    JNIEnv *env = 0;
+    //获得JNIEnv 这里会返回一个值 小于0 代表失败
+    jint res = vm->GetEnv((void **) (&env), JNI_VERSION_1_6);
+    //判断返回结果
+    if (res != JNI_OK) {
+        return -1;
+    }
+    //根据类名找到类，注意有native的类不能被混淆
+    jclass jcls = env->FindClass(mClassName);
+    //动态注册  第一个参数 类  第二个参数 方法数组  第三个参数 注册多少个方法
+    env->RegisterNatives(jcls, method, sizeof(method) / sizeof(JNINativeMethod));
+    return JNI_VERSION_1_6;
 }

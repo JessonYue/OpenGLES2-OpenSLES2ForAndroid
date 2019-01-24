@@ -4,7 +4,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 class JavaTest {
-
+    public native void testeeew();
     public native void printMethod();
 
     public native void cDiaojavaJingTai();
@@ -41,4 +41,42 @@ class JavaTest {
      * 通过c来修改Java 的属性
      */
     public native void changeValue();
+
+    /**
+     * jni 动态注册
+     * @param i
+     * @return
+     */
+    public native int dynamicJavaTest(int i);
+
+
+    /**
+     * jni 异常
+     */
+    public native void doit() throws Exception;
+
+    public static void exceptionCallback() {
+        int a = 20 / 0;
+        System.out.println("--->" + a);
+    }
+
+    public static void normalCallback() {
+        System.out.println("In Java: invoke normalCallback.");
+    }
+
+    /**
+     * jni 线程
+     */
+    //由JNI中的线程回调
+     private static void fromJNI(int i) {
+         Log.v("Java------>", ""+i);
+     }
+
+     //本地方法
+     private native void mainThread();
+     private native void setJNIEnv();
+     private native void setJNIEnv444();
+
+
+
 }

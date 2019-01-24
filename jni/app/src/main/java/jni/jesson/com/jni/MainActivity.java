@@ -3,27 +3,23 @@ package jni.jesson.com.jni;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
-import jni.jesson.com.jni.thread.PrimeNative;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     JavaTest javatest;
-    private PrimeNative pn;
-    public static MainActivity ref;
-    public static TextView counterView;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        counterView = findViewById(R.id.sample_text);
+        findViewById(R.id.yichang).setOnClickListener(this);
+
+
         javatest = new JavaTest();
-        pn = new PrimeNative(10, 100);
-        ref = this;
+
 
         javatest.printMethod();
         byte[] bytes = javatest.returnAByteArray();
@@ -39,5 +35,19 @@ public class MainActivity extends AppCompatActivity {
         javatest.changeValue();
         Log.i("myDemo-jni",javatest.number+"");
         Log.i("myDemo-jni",javatest.content+"");
+        javatest.dynamicJavaTest(100);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.yichang:
+                try {
+                    javatest.doit();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+        }
     }
 }
