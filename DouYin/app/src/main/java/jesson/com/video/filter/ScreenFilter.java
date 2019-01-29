@@ -1,4 +1,4 @@
-package jesson.com.video.widget;
+package jesson.com.video.filter;
 
 import android.content.Context;
 import android.opengl.GLES11Ext;

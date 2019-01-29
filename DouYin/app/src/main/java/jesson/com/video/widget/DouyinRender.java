@@ -9,6 +9,7 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 import jesson.com.video.utils.CameraHelper;
 
+
 public class DouyinRender implements GLSurfaceView.Renderer, SurfaceTexture.OnFrameAvailableListener {
 
     private jesson.com.video.widget.ScreenFilter mScreenFilter;
@@ -30,7 +31,7 @@ public class DouyinRender implements GLSurfaceView.Renderer, SurfaceTexture.OnFr
      */
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-        //初始化操作
+        //初始化camera操作
         mCameraHelper = new CameraHelper(Camera.CameraInfo.CAMERA_FACING_BACK);
 
         //准备好摄像头绘制的画布
@@ -38,6 +39,10 @@ public class DouyinRender implements GLSurfaceView.Renderer, SurfaceTexture.OnFr
         mTextures = new int[1];
         GLES20.glGenTextures(mTextures.length,mTextures,0);
         mSurfaceTexture=new SurfaceTexture(mTextures[0]);
+        /**
+         * Register a callback to be invoked when a new image frame becomes available to the
+         *      * SurfaceTexture.
+         */
         mSurfaceTexture.setOnFrameAvailableListener(this);
 
         //必须要glThread中进行初始化

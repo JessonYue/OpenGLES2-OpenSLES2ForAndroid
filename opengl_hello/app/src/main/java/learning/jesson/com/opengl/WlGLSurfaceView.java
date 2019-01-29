@@ -13,5 +13,6 @@ public class WlGLSurfaceView extends GLSurfaceView {
         super(context, attrs);
         setEGLContextClientVersion(2);
         setRenderer(new WlRender(context));
+        setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
     }
 }
