@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="lyq.com.video">
+    package="jesson.com.video">
 
     <!--表示只有在支持OpenGL ES 2.0版本手机上可运行-->
     <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="lyq.com.video.MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -8,8 +8,8 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
+import jesson.com.video.R;
 import jesson.com.video.utils.OpenUtils;
-import lyq.com.video.R;
 
 
 public class ScreenFilter {
@@ -28,39 +28,32 @@ public class ScreenFilter {
     public ScreenFilter(Context context) {
 
         //把camera_vertext内容读出来
-        String vertexSource= OpenUtils.readRawTextFile(context, R.raw.camera_vertex);
+        String vertexSource= OpenUtils.readRawTextFile(context,
+                R.raw.camera_vertex);
         String fragSource = OpenUtils.readRawTextFile(context, R.raw.camera_frag);
 
+        //============opengl的代码实现=================================
 
-        //通过字符串创建着色器程序
-        //使用opengl
-        //一.顶点着色器
-        //1.1创建顶点着色器
+        //顶点着色器
         int vSharderId = GLES20.glCreateShader(GLES20.GL_VERTEX_SHADER);
-        //1.2绑定代码到着色器中
         GLES20.glShaderSource(vSharderId,vertexSource);
-        //1.3编译着色器
         GLES20.glCompileShader(vSharderId);
-        //1.4主动获取成功失败
         int[] status=new int[1];
         GLES20.glGetShaderiv(vSharderId,GLES20.GL_COMPILE_STATUS,status,0);
         if (status[0] != GLES20.GL_TRUE){
             throw new IllegalStateException("ScreenFitler 顶点着色器配置失败！");
         }
 
-        //二.创建片元着色器
+        //片元着色器
         int fShaderId = GLES20.glCreateShader(GLES20.GL_FRAGMENT_SHADER);
-        //绑定代码到着色器中
         GLES20.glShaderSource(fShaderId,fragSource);
-        //编译
         GLES20.glCompileShader(fShaderId);
         GLES20.glGetShaderiv(fShaderId,GLES20.GL_COMPILE_STATUS,status,0);
         if (status[0] != GLES20.GL_TRUE){
             throw new IllegalStateException("ScreenFilter 片元着色器配置失败");
         }
 
-
-        //三、把着色器塞到程序里面去，GPU
+        //把着色器塞到程序里面去，GPU
         mProgram = GLES20.glCreateProgram();
         GLES20.glAttachShader(mProgram,vSharderId);
         GLES20.glAttachShader(mProgram,fShaderId);
@@ -87,12 +80,12 @@ public class ScreenFilter {
 
 
         //创建一个数据缓冲区
-        //OpenGL的中顶点的位置坐标
+        //OpenGL的中顶点的位置坐标  4个顶点 2个数据xy float 4byte
         mVertextBuffer = ByteBuffer.allocateDirect(4 * 2 * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
         mVertextBuffer.clear();
         float[] v = {-1.0f,-1.0f,
                 1.0f,-1.0f,
-                -1.0f,1.0f,
+                -1.0f,1.0f, //注意这里的顺序
                 1.0f,1.0f
         };
 
@@ -117,7 +110,7 @@ public class ScreenFilter {
 //
 //        };
 
-//        镜像
+        //镜像
         float[] f={1.0f,0.0f,
                 1.0f,1.0f,
                 0.0f,0.0f,

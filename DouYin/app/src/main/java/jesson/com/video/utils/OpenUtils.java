@@ -8,7 +8,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class OpenUtils {
-
+    /***
+     * 把raw文件夹的glsl文件读取程string
+     * @param context
+     * @param rawId
+     * @return
+     */
     public static String readRawTextFile(Context context, int rawId) {
 
         InputStream is = context.getResources().openRawResource(rawId);

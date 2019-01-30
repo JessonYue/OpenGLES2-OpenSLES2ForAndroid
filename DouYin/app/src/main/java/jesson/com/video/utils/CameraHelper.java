@@ -6,9 +6,12 @@ import android.hardware.Camera;
 
 import java.io.IOException;
 
+/***
+ * Camera帮助类
+ */
 public class CameraHelper implements Camera.PreviewCallback {
 
-    private static final String TAG = "CameraHelper";
+    private static final String TAG = "JessonCameraHelper";
     private static final int WIDTH = 640;
     private static final int HEIGHT = 480;
 
