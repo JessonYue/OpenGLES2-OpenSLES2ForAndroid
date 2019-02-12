@@ -1,14 +1,11 @@
 #include <jni.h>
 #include <string>
 #include <android/log.h>
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include <openssl/hmac.h>
 #include <openssl/rsa.h>
 #include <openssl/pem.h>
 #include <openssl/md5.h>
-
 
 #define TAG "openssl"
 #define LOGI(...) __android_log_print(ANDROID_LOG_INFO, TAG, __VA_ARGS__)
@@ -54,6 +51,3 @@ Java_openssl_jesson_com_openssl_JNIUTILS_encodeByHmacSHA1(JNIEnv *env, jobject i
     return signature;
 }
 
-#ifdef __cplusplus
-}
-#endif

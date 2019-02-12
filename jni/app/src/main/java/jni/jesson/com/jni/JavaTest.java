@@ -1,10 +1,11 @@
 package jni.jesson.com.jni;
 
 import android.util.Log;
-import android.widget.Toast;
+
 
 class JavaTest {
     public native void testeeew();
+
     public native void printMethod();
 
     public native void cDiaojavaJingTai();

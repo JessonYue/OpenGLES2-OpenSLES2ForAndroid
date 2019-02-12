@@ -9,6 +9,7 @@ cmake_minimum_required(VERSION 3.4.1)
 # or SHARED, and provides the relative paths to its source code.
 # You can define multiple libraries, and CMake builds them for you.
 # Gradle automatically packages shared libraries with your APK.
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/openssl-armeabi-v7a/include)
 
 add_library( # Sets the name of the library.
         native-lib
@@ -30,11 +31,13 @@ add_library( # Sets the name of the library.
 # 创建一个静态库 libcrypto 直接引用libcrypto.a
 add_library(crypto SHARED IMPORTED)
 set_target_properties(crypto PROPERTIES IMPORTED_LOCATION
-        ${CMAKE_CURRENT_SOURCE_DIR}/openssl-armeabi-v7a/lib/libcrypto.so.1.1)
+        ${CMAKE_CURRENT_SOURCE_DIR}/openssl-armeabi-v7a/libs/armeabi-v7a/libcrypto.so)
 
 add_library(ssl SHARED IMPORTED)
 set_target_properties(ssl PROPERTIES IMPORTED_LOCATION
-        ${CMAKE_CURRENT_SOURCE_DIR}/openssl-armeabi-v7a/lib/libssl.so.1.1)
+        ${CMAKE_CURRENT_SOURCE_DIR}/openssl-armeabi-v7a/libs/armeabi-v7a/libssl.so)
+
+
 
 
 find_library( # Sets the name of the path variable.
@@ -51,7 +54,7 @@ message(STATUS "============")
 message(STATUS "CMAKE_CURRENT_SOURCE_DIR" ${CMAKE_CURRENT_SOURCE_DIR})
 message(STATUS "project source" ${PROJECT_SOURCE_DIR})
 
-include_directories(openssl-armeabi-v7a/include)
+
 
 
 target_link_libraries( # Specifies the target library.

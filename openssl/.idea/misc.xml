@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
   <component name="MarkdownProjectSettings" wasCopied="true">
     <PreviewSettings splitEditorLayout="SPLIT" splitEditorPreview="PREVIEW" useGrayscaleRendering="false" zoomFactor="1.0" maxImageWidth="0" showGitHubPageIfSynced="false" allowBrowsingInPreview="false" synchronizePreviewPosition="true" highlightPreviewType="NONE" highlightFadeOut="5" highlightOnTyping="true" synchronizeSourcePosition="true" verticallyAlignSourceAndPreviewSyncPosition="true" showSearchHighlightsInPreview="false" showSelectionInPreview="true" openRemoteLinks="true" replaceUnicodeEmoji="false" lastLayoutSetsDefault="false">
       <PanelProvider>
@@ -80,36 +85,122 @@
       <textMaps />
     </LinkMapSettings>
   </component>
-  <component name="NullableNotNullManager">
-    <option name="myDefaultNullable" value="android.support.annotation.Nullable" />
-    <option name="myDefaultNotNull" value="android.support.annotation.NonNull" />
-    <option name="myNullables">
-      <value>
-        <list size="7">
-          <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.Nullable" />
-          <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nullable" />
-          <item index="2" class="java.lang.String" itemvalue="javax.annotation.CheckForNull" />
-          <item index="3" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.Nullable" />
-          <item index="4" class="java.lang.String" itemvalue="android.support.annotation.Nullable" />
-          <item index="5" class="java.lang.String" itemvalue="androidx.annotation.Nullable" />
-          <item index="6" class="java.lang.String" itemvalue="androidx.annotation.RecentlyNullable" />
-        </list>
-      </value>
-    </option>
-    <option name="myNotNulls">
-      <value>
-        <list size="6">
-          <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.NotNull" />
-          <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nonnull" />
-          <item index="2" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.NonNull" />
-          <item index="3" class="java.lang.String" itemvalue="android.support.annotation.NonNull" />
-          <item index="4" class="java.lang.String" itemvalue="androidx.annotation.NonNull" />
-          <item index="5" class="java.lang.String" itemvalue="androidx.annotation.RecentlyNonNull" />
-        </list>
-      </value>
-    </option>
+  <component name="ProjectPlainTextFileTypeManager">
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/__DECC_INCLUDE_EPILOGUE.H" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/__DECC_INCLUDE_PROLOGUE.H" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/aes.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/asn1.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/asn1_mac.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/asn1err.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/asn1t.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/async.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/asyncerr.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/bio.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/bioerr.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/blowfish.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/bn.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/bnerr.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/buffer.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/buffererr.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/camellia.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/cast.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/cmac.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/cms.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/cmserr.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/comp.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/comperr.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/conf.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/conf_api.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/conferr.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/crypto.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/cryptoerr.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/ct.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/cterr.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/des.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/des_old.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/dh.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/dherr.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/dsa.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/dsaerr.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/dso.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/dtls1.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/e_os2.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/ebcdic.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/ec.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/ecdh.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/ecdsa.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/ecerr.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/engine.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/engineerr.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/err.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/evp.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/evperr.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/hmac.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/idea.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/kdf.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/kdferr.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/krb5_asn.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/kssl.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/lhash.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/md2.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/md4.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/md5.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/mdc2.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/modes.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/obj_mac.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/objects.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/objectserr.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/ocsp.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/ocsperr.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/opensslconf.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/opensslv.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/ossl_typ.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/pem.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/pem2.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/pemerr.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/pkcs12.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/pkcs12err.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/pkcs7.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/pkcs7err.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/pqueue.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/rand.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/rand_drbg.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/randerr.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/rc2.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/rc4.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/rc5.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/ripemd.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/rsa.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/rsaerr.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/safestack.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/seed.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/sha.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/srp.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/srtp.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/ssl.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/ssl2.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/ssl23.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/ssl3.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/sslerr.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/stack.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/store.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/storeerr.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/symhacks.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/tls1.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/ts.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/tserr.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/txt_db.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/ui.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/ui_compat.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/uierr.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/whrlpool.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/x509.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/x509_vfy.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/x509err.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/x509v3.h" />
+    <file url="file://$PROJECT_DIR$/app/openssl-armeabi-v7a/include/openssl/x509v3err.h" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="1.8 (2)" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
