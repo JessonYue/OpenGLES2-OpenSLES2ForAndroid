@@ -13,6 +13,7 @@
 #define LOGE(...) __android_log_print(ANDROID_LOG_ERROR,TAG ,__VA_ARGS__) // 定义LOGE类型
 #define LOGF(...) __android_log_print(ANDROID_LOG_FATAL,TAG ,__VA_ARGS__) // 定义LOGF类型
 
+#include <unwind.h>
 
 using namespace std;
 
@@ -143,7 +144,7 @@ void doit(JNIEnv *env, jobject obj){
     printf("In C: Java_com_study_jnilearn_JNIException_doit-->called!!!!");
     if (env->ExceptionCheck()) {  // 检查JNI调用是否有引发异常
         env->ExceptionDescribe();
-        env->ExceptionClear();        // 清除引发的异常，在Java层不会打印异常的堆栈信息
+        env->ExceptionClear();    // 清除引发的异常，在Java层不会打印异常的堆栈信息
         env->ThrowNew(env->FindClass("java/lang/Exception"),"JNI抛出的异常！");
         return;
     }
@@ -154,16 +155,69 @@ void doit(JNIEnv *env, jobject obj){
 
 }
 
+//线程数
+#define NUMTHREADS 5
+#include<pthread.h>
+//全局变量
+JavaVM *g_jvm = NULL;
+jobject g_obj = NULL;
+
+void *thread_fun(void* arg){
+    JNIEnv *env;
+         jclass cls;
+         jmethodID mid;
+
+         //Attach主线程
+         if(g_jvm->AttachCurrentThread( &env, NULL) != JNI_OK)
+             {
+                 LOGE("%s: AttachCurrentThread() failed", __FUNCTION__);
+                 return NULL;
+             }
+         //找到对应的类
+         cls = env->GetObjectClass(g_obj);
+         if(cls == NULL)
+             {
+                 LOGE("FindClass() Error.....");
+                 goto error;
+             }
+         //再获得类中的方法
+         mid = env->GetStaticMethodID(cls, "fromJNI2", "(I)V");
+         if (mid == NULL)
+             {
+                 LOGE("GetMethodID() Error.....");
+                 goto error;
+             }
+         //最后调用java中的静态方法
+         env->CallStaticVoidMethod(cls,mid,arg);
+
+
+    error:
+         //Detach主线程
+         if(g_jvm->DetachCurrentThread() != JNI_OK)
+             {
+                 LOGE("%s: DetachCurrentThread() failed", __FUNCTION__);
+             }
+         pthread_exit(0);
+}
+
+
 
 extern "C"
 void mainThread(JNIEnv *env, jobject obj){
-env->
+    int i;
+    pthread_t pt[NUMTHREADS];
+    for (i = 0; i < NUMTHREADS; i++)
+        //创建子线程
+    pthread_create(&pt[i], NULL, &thread_fun, (void *)i);
 }
 
 
 extern "C"
 void setJNIEnv(JNIEnv *env, jobject obj){
-
+//保存全局JVM以便在子线程中使用
+         env->GetJavaVM(&g_jvm);
+         //不能直接赋值(g_obj = obj)
+         g_obj = env->NewGlobalRef(obj);
 }
 
 

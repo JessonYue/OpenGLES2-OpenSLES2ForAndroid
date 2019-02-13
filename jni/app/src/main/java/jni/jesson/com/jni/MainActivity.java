@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViewById(R.id.yichang).setOnClickListener(this);
+        findViewById(R.id.thread).setOnClickListener(this);
 
 
         javatest = new JavaTest();
@@ -36,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.i("myDemo-jni",javatest.number+"");
         Log.i("myDemo-jni",javatest.content+"");
         javatest.dynamicJavaTest(100);
+
+        javatest.setJNIEnv();
     }
 
     @Override
@@ -47,6 +50,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                break;
+            case R.id.thread:
+                javatest.mainThread();
                 break;
         }
     }

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">jni</string>
+    <string name="jni">JNI异常</string>
+    <string name="jnithread">JNI启动线程</string>
 </resources>

@@ -74,9 +74,8 @@ class JavaTest {
      }
 
      //本地方法
-     private native void mainThread();
-     private native void setJNIEnv();
-     private native void setJNIEnv444();
+     public native void mainThread();
+     public native void setJNIEnv();
 
 
 
