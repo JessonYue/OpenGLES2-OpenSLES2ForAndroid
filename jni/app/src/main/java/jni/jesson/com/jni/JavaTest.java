@@ -18,6 +18,7 @@ class JavaTest {
 
     public JavaTest() {
         System.loadLibrary("native-lib");
+        initIds();//C中全局变量初始化
     }
 
 
@@ -37,6 +38,7 @@ class JavaTest {
 
     public int number = 9;
     public String content = "I'm from Java!";
+
 
     /**
      * 通过c来修改Java 的属性
@@ -76,6 +78,9 @@ class JavaTest {
      //本地方法
      public native void mainThread();
      public native void setJNIEnv();
+
+     //缓存的使用
+     public native void initIds();
 
 
 

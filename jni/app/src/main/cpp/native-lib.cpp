@@ -23,6 +23,18 @@ Java_jni_jesson_com_jni_JavaTest_printMethod(JNIEnv *env, jobject instance) {
     LOGD("Native method called. Printing jesson." );
 }
 
+//初始化两个全局变量，动态库加载完成之后，立刻缓存起来
+//以后可以在其他函数使用，声明周期也是跟应用程序（进程）一致
+//初始化全局变量
+jfieldID key_fid;
+jmethodID random_mid;
+extern "C"
+JNIEXPORT void JNICALL
+Java_jni_jesson_com_jni_JavaTest_initIds(JNIEnv *env, jclass cls) {
+    LOGD("---------key_fid---------\n");
+}
+
+
 
 extern "C"
 JNIEXPORT jbyteArray JNICALL
@@ -181,7 +193,7 @@ void *thread_fun(void* arg){
                  goto error;
              }
          //再获得类中的方法
-         mid = env->GetStaticMethodID(cls, "fromJNI2", "(I)V");
+         mid = env->GetStaticMethodID(cls, "fromJNI", "(I)V");
          if (mid == NULL)
              {
                  LOGE("GetMethodID() Error.....");
@@ -222,6 +234,18 @@ void setJNIEnv(JNIEnv *env, jobject obj){
 
 
 
+//extern "C"
+//void initIds(JNIEnv *env, jclass clazz){
+//    jfieldID key_fid = env->GetFieldID(clazz, "content", "Ljava/lang/String;");
+//    printf("---------key_fid---------\n");
+//    jmethodID random_mid = env->GetMethodID(clazz, "cNewObjDJ","()V");
+//    printf("---------random_mid---------\n");
+//
+//}
+
+
+
+
 JavaVM *_vm;
 //类名
 static const char *mClassName = "jni/jesson/com/jni/JavaTest";
@@ -232,6 +256,7 @@ static const JNINativeMethod method[] = {
         {"doit", "()V", (void *)doit},
         {"mainThread", "()V", (void *)mainThread},
         {"setJNIEnv", "()V", (void *)setJNIEnv}
+//        {"initIds", "()V", (void *)initIds}
 };
 
 //返回Jni 版本
